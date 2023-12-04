@@ -42,6 +42,7 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libelf-dev libdwarf-dev\
     libdlt2 libdlt-dev \
     libwebp-dev \
+    libxkbcommon-dev \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
