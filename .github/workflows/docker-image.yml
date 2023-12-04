@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag stepanove/qt_ci:${{github.ref_name}} --build-arg  QT=${{github.ref_name}}
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Push the Docker image
+      run: docker push stepanove/qt_ci:${{github.ref_name}}
