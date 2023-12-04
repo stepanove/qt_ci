@@ -43,6 +43,7 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libdlt2 libdlt-dev \
     libwebp-dev \
     libxkbcommon-dev \
+    libxcb-cursor0 \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
